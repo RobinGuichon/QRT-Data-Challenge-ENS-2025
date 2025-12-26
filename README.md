@@ -32,7 +32,7 @@ The `CYTOGENETICS` column contains unstructured text describing chromosomal abno
 ### 1.3 Feature Importance Analysis
 The chart below (generated in the notebook) confirms that our engineered features are the most predictive. The `worst_gene` feature (Target Encoding) is the #1 predictor, surpassing standard clinical variables.
 
-![Feature Importance](Images/Annexe_B2.png)
+![Feature Importance](Images/Annexe_B3.png)
 *Figure 1: Random Forest Feature Importance. Note the dominance of the engineered 'worst_gene' and 'mean_gene' features.*
 
 ---
@@ -45,7 +45,7 @@ Before supervised modeling, I analyzed the population structure to identify hidd
 * **PCA & K-Means:** I projected the high-dimensional data using PCA and applied **K-Means Clustering** ($k=12$).
 * **Outcome:** This identified distinct clusters of patients with similar genetic profiles. These Cluster IDs were added as features to the final model.
 
-![PCA Projection](Images/Annexe_B1.png)
+![PCA Projection](Images/Annexe_B2.png)
 *Figure 2: 2D Projection of patient profiles. The colors represent the 12 clusters identified by K-Means, showing distinct biological subgroups.*
 
 ---
@@ -65,7 +65,7 @@ I trained **9 base models** including Histogram Gradient Boosting (HGBT), Random
 
 The correlation matrix below shows why Stacking works: while tree-based models (bottom left) are correlated, the **KNN and Lasso** models (darker squares) are decorrelated. This diversity stabilizes the final prediction.
 
-![Correlation Matrix](Images/Annexe_B3.png)
+![Correlation Matrix](Images/Annexe_B4.png)
 *Figure 3: Pearson Correlation Matrix between the 9 base models. Diversity (low correlation) is key for ensemble performance.*
 
 ---
@@ -81,7 +81,7 @@ The final predictions are a weighted average of the 9 models.
 ### Clinical Validation (Kaplan-Meier)
 To verify the model's usefulness, I plotted survival curves for patients predicted as "Low Risk", "Intermediate Risk", and "High Risk". The curves are clearly separated, proving the model effectively stratifies patients.
 
-![Kaplan-Meier Curves](Images/Annexe_B4.png)
+![Kaplan-Meier Curves](Images/Annexe_B5.png)
 *Figure 4: Kaplan-Meier survival curves on the validation set. The model successfully distinguishes high-risk patients (bottom curve) from low-risk patients (top curve).*
 
 ---
